@@ -10,7 +10,8 @@ import com.codelabs.state.composables.WellnessTaskItem
 fun WellnessTasksList(
     modifier: Modifier = Modifier,
     taskList: List<WellnessTask>,
-    onCloseTask: (WellnessTask) -> Unit
+    onCloseTask: (WellnessTask) -> Unit,
+    onCheckedChanged: (WellnessTask) -> Unit
 ) {
     LazyColumn {
         items(
@@ -19,7 +20,9 @@ fun WellnessTasksList(
             WellnessTaskItem(
                 task = task,
                 modifier = modifier,
-                onClose = { onCloseTask(task) }
+                onClose = { onCloseTask(task) },
+                onCheckedChange = { onCheckedChanged(task) },
+                isChecked = task.checked
             )
         }
     }
